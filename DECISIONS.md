@@ -32,3 +32,16 @@ Next steps will be to identify and close the gaps on the client-01 case to estab
 
 NB: w.r.t. WoW, committing straight to main branch and including updates in DECISIONS.md as I go 
 
+
+## 002 - Setting up the Eval Pipeline
+
+Decisions made:
+1. Pipeline should combine deterministic checks (code), LLM-as-Judge, and reference figure checks (treating the dataset as training data). 
+2. Placeholders should be human-first, so `[PLACE_HOLDER]` is the chosen format 
+3. Eval cases chosen to meet only the defined requirements for client 01 for now (not additional changes yet)
+4. Eval cases are grouped by area, file stucture reflects this
+5. Opted to use Pydantic Evals to reduce overhead and provide a bit more functionality out of the box. 
+6. Included the corresponding pydantic claude plugin marketplace in the repo (makes development easier)
+
+Ran client_01 through evals and hit ~50% pass rate showing issues are being caught correctly.  
+
