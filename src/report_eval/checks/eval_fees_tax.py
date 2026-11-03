@@ -23,6 +23,7 @@ async def d3_initial_vs_ongoing_charge(ctx: Ctx) -> Result:
         f"report that never states {m.group(1)}% as an ongoing charge. A [TO BE CONFIRMED: "
         "ongoing advice charge] placeholder is not a statement of that percentage. Quote the "
         "offending sentence in your reason.",
+        sources=("request",),
     )
 
 
@@ -47,6 +48,7 @@ async def d5_fee_rates_not_asserted_without_placeholder(ctx: Ctx) -> Result:
         + allowed
         + "Quote the offending sentence in "
         "your reason.",
+        sources=("request",),
     )
 
 

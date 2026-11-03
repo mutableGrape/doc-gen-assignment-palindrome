@@ -25,6 +25,7 @@ async def g1_written_in_1st_person_british_english(ctx: Ctx):
     return await judge(
         ctx,
         "Written in British English and in the first person plural ('we'), addressing the client as 'you'.",
+        sources=(),
     )
 
 
@@ -32,6 +33,7 @@ async def g2_no_irrelevant_detail(ctx: Ctx):
     return await judge(
         ctx,
         "No irrelevant detail from the meeting note (holidays, unrelated property, etc.) appears in the report.",
+        sources=("notes", "request"),
     )
 
 
@@ -39,6 +41,7 @@ async def g3_client_is_addressed_directly(ctx: Ctx):
     return await judge(
         ctx,
         "Ignore the accounts table completely: names in table cells are expected and never a failure. In the running prose (paragraphs and bullets), the client must be referred to as 'you'/'your', never by name and never as 'she', 'he', 'her' or 'his'. Naming one holder of a joint client purely to tell individual accounts apart (e.g. \"David's ISA\") is acceptable. Fail only if you can quote a prose sentence that breaks this, and quote it in your reason; if you cannot quote one, pass.",
+        sources=(),
     )
 
 
@@ -46,6 +49,7 @@ async def g5_introduction_is_short_and_well_phrased(ctx: Ctx):
     return await judge(
         ctx,
         "Judge the Introduction section only. It is built from fixed template text: 'Further to our recent discussions, we are writing to set out our advice in relation to <accounts>. This advice is based on the information currently available to us.' followed by the firm's FCA statement as its own paragraph. Both are standard and never a failure, and the FCA paragraph does not count towards length. Pass if the Introduction is short overall (the template text plus at most a couple of extra sentences) and reads smoothly and professionally. Briefly framing the client's situation or goals is fine. Fail only if it is long, rambling or repetitive, or is awkwardly or ungrammatically phrased. Quote the offending text in your reason; if you cannot quote any, pass.",
+        section="Introduction",
     )
 
 

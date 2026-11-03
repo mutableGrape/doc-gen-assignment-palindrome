@@ -115,7 +115,9 @@ async def c5_unknown_values_flagged_as_tbc(ctx: Ctx) -> Result:
             )
     names = ", ".join(a["match"] for a in unknown)
     return await judge(
-        ctx, f"Accounts with unknown value (row patterns): {names}. " + C5_RUBRIC
+        ctx,
+        f"Accounts with unknown value (row patterns): {names}. " + C5_RUBRIC,
+        section="Background",
     )
 
 

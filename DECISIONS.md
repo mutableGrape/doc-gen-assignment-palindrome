@@ -71,3 +71,11 @@ Decisions:
 5. Added `forbidden_amounts` £38,000 (client_03) and £45,000 (client_02) to expected.json: vague figures are otherwise "allowed" because they appear in the notes.
 
 Open: judge d5 occasionally rejects the request's 0.5% initial charge
+
+## 007 - Eval flakiness and client_03 coverage
+
+1. d5/d3 judges: the rubric now names the request's initial-charge percentage explicitly as allowed (d5) and says not mentioning it passes (d3). Previously the judge rejected it in ~1 in 4 runs
+2. f2 (per-platform charges) is now gated deterministically on the db's platform count
+3. New checks: e5 (Introduction covers every requested account, incl. a new one) and client_03 `forbidden_terms` (grandchildren, trip, flowers: small talk the notes say changes nothing)
+4. Residual: client_02 states £45,000; client_03 states £120,000 in Background. Now caught in eval. 
+5. Refactoring the Judge context to reduce input tokens needed. 

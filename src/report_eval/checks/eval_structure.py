@@ -123,6 +123,7 @@ async def a4_conclusion_is_brief(ctx: Ctx):
     return await judge(
         ctx,
         "The Conclusion contains only the standard risk warning and a short closing line inviting the client to proceed. It must not restate the introduction, the client's circumstances, the recommendation, the fees or the accounts table. A Conclusion that recaps other sections fails.",
+        section="Conclusion",
     )
 
 

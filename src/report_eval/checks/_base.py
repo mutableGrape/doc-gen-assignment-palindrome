@@ -5,6 +5,8 @@ check id such as `a1_`) is its evaluation name. Return an `EvaluationReason`, or
 check does not apply to this client.
 """
 
+import json
+
 from pydantic_ai import ModelSettings
 from pydantic_evals.evaluators import EvaluationReason, EvaluatorContext
 from pydantic_evals.evaluators.llm_as_a_judge import judge_input_output
@@ -40,11 +42,30 @@ def no_expected(ctx: Ctx) -> EvaluationReason | None:
     )
 
 
-async def judge(ctx: Ctx, rubric: str) -> EvaluationReason:
-    """LLM-judge the whole report against `rubric`, given the client's sources."""
+async def judge(
+    ctx: Ctx,
+    rubric: str,
+    *,
+    section: str | None = None,
+    sources: tuple[str, ...] = (),
+) -> EvaluationReason:
+    """LLM-judge the report against `rubric`, sending only the context the rubric needs.
+
+    section: judge only the section whose title contains this text (default: whole report).
+    sources: which of "notes", "request", "db" to include (default: none, i.e. report-only).
+    """
+    text = ctx.output.raw
+    if section is not None:
+        body = ctx.output.find_section(section)
+        if body is None:
+            return EvaluationReason(value=False, reason=f"no {section} section")
+        text = f"## {section}\n{body}"
+    meta = ctx.metadata
+    parts = {"notes": meta.notes, "request": meta.request, "db": json.dumps(meta.db)}
+    src = "\n\n".join(f"[{k.upper()}]\n{parts[k]}" for k in sources)
     verdict = await judge_input_output(
-        ctx.inputs.sources,
-        ctx.output.raw,
+        src or "(no sources needed for this criterion)",
+        text,
         JUDGE_PREAMBLE + rubric,
         JUDGE_MODEL,
         JUDGE_SETTINGS,
