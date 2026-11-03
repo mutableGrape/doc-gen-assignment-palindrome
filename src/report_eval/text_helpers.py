@@ -120,6 +120,32 @@ def paragraphs(text: str) -> list[str]:
     return [b.strip() for b in re.split(r"\n\s*\n", text) if b.strip()]
 
 
+def _quote_norm(text: str) -> str:
+    """Lowercased, whitespace-collapsed text without markdown emphasis or end punctuation noise."""
+    text = norm(text).replace("**", "").replace("`", "").lower()
+    return text.strip(" .,;:\"'")
+
+
+def quote_in(quote: str, text: str) -> bool:
+    """Whether a judge's `quote` really occurs in `text`.
+
+    Tolerates layout, case, markdown bold and an elision ('...' / '…') between fragments, which
+    must then appear in order. An empty quote never matches.
+    """
+    hay = _quote_norm(text)
+    parts = [_quote_norm(p) for p in re.split(r"\.\.\.|…", quote)]
+    parts = [p for p in parts if p]
+    if not parts:
+        return False
+    pos = 0
+    for part in parts:
+        i = hay.find(part, pos)
+        if i < 0:
+            return False
+        pos = i + len(part)
+    return True
+
+
 def prose(text: str) -> str:
     """`text` without markdown table lines."""
     return "\n".join(

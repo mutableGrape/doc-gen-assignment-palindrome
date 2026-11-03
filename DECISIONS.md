@@ -138,3 +138,30 @@ Results: client_04 86.0% -> 95-100%. Clients 01-03 100%.
 One drift caught and fixed mid-way: loosening "do not state account values" made client_03 quote the vague £38,000.
 Remaining flake on client_04: occasionally the GIA top-up or one outstanding item is dropped (h1/h3), or charges not per platform (f2).
 Not changed: cash accounts stay in the table; generic tax-relief sentences are discouraged by the prompt, not forbidden.
+
+
+## 012 - Making the evals dependable (evidence, scores, new checks)
+
+Problem: the evals could not separate the ideal client_04 report (40/40) from a generated one with
+real defects (39/40, 97.7%), and the same report gave different h1/h3 verdicts on different runs.
+The generated report also invented a Brightwell GIA top-up that no check caught.
+
+Changes:
+1. **Evidence-backed judging** (`judge_quoted`): for h1-h3 the judge must quote the report sentence
+   its verdict rests on, and the quote is verified in code. Support checks need a verified quote to
+   pass; forbidden checks need one to fail. h3 evidence must also contain a placeholder. One call
+   per entry (`VOTES = 1`); majority voting is available but off for cost.
+2. **Per-item scores**: h1-h4 also report `<check>_score` (fraction of entries passing).
+3. **h4 (generic)**: every action in Recommendations must trace to a verified quote from the
+   notes/request agreeing that action for that account. Catches invented actions on any client.
+4. **g6 (deterministic)**: no "I"/"my"/"me" in prose (the g1 judge let "I will confirm" through).
+5. **Stability runs** (opt-in, `report_eval.run --repeat N`): PASS/FLAKY/FAIL per check, with reasons.
+6. **Rate limits**: judge calls are throttled (6 at a time) and 429s retried; a crashed check
+   counts as a failed run instead of being dropped silently.
+7. client_04 expected.json: split the lumped "amount sold and CGT" outstanding item; added a
+   forbidden Brightwell top-up and a required answer to the total-cost question; reworded a
+   forbidden statement that contradicted e5 (the Introduction must name the new account).
+
+Tried and removed: positive/negative controls (the ideal plus 8 single-defect copies, each run
+several times). They exposed the e5 contradiction and two loose rubrics, but cost hundreds of judge
+calls per run, so they were taken out.

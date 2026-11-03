@@ -114,6 +114,10 @@
     {
       "value": "The advice is weighed against the clients' goal of replacing James's income when he steps back from full-time work in about three years.",
       "why": "Notes: overriding objective, 'everything we recommend should be weighed against that three-year goal'"
+    },
+    {
+      "value": "The report explicitly acknowledges the clients' question about the total (combined) ongoing cost across the three platforms, not only listing each platform's charge separately.",
+      "why": "Notes: Caroline asked about the total ongoing cost across the three platforms; adviser said the report would set out the verified charges. Per-platform placeholders alone were accepted as an answer 2/3 runs, so the statement now asks for the question itself to be addressed"
     }
   ],
   "forbidden_statements": [
@@ -142,8 +146,8 @@
       "why": "Spec: say the disposal MAY create a CGT liability against the annual exempt amount; the gain is unknown"
     },
     {
-      "value": "Describes the new joint investment account as an existing account, or lists it among the existing accounts covered.",
-      "why": "Request: 'a new joint account'; it does not exist yet"
+      "value": "Describes the new joint investment account as already open or existing, e.g. by giving it a current value or a row in the holdings table. (Naming it in the Introduction as an account the advice covers is expected, not a breach.)",
+      "why": "Request: 'a new joint account'; it does not exist yet. Earlier wording ('lists it among the accounts covered') contradicted e5, which requires the Introduction to name it; the judge flipped on the ideal report (entry 012)"
     },
     {
       "value": "Says the remaining proceeds are added to the existing Holloway joint General Investment Account instead of the new joint account.",
@@ -152,6 +156,10 @@
     {
       "value": "Mentions the clients' emotional state, the personal history of the business sale, grandchildren, school fees, charitable giving or the French property.",
       "why": "Notes: tangents / future aspirations, 'nothing should be actioned on them in this report'; Background is a high-level summary"
+    },
+    {
+      "value": "Recommends adding new money to the Brightwell joint General Investment Account.",
+      "why": "Notes' plan adds only to the Holloway joint GIA; the request's 'contribution to the joint GIA' is singular. The Brightwell GIA is in scope (covered) but not topped up (baseline defect, entry 012)"
     }
   ],
   "outstanding_items": [
@@ -176,8 +184,12 @@
       "why": "Not stated in the sources; to be sized against each person's annual allowance"
     },
     {
-      "value": "The amount of the Holloway joint GIA to be sold, and the resulting capital gain or liability.",
-      "why": "Notes: 'a portion' only; capital gains position 'to set out' once known"
+      "value": "The amount of the Holloway joint GIA to be sold.",
+      "why": "Notes: disinvest 'a portion' only; no amount given anywhere"
+    },
+    {
+      "value": "The capital gains tax liability on the partial sale of the Holloway joint GIA.",
+      "why": "Notes: the sale 'will have a capital gains position to set out'; the gain is unknown"
     },
     {
       "value": "The platform charge for each of the three platforms (Holloway, Brightwell, Meridian) and the ongoing advice charge.",

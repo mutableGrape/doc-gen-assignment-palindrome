@@ -5,7 +5,10 @@ import re
 from pydantic_evals.evaluators import EvaluationReason
 
 from report_eval.checks._base import Ctx, Result, judge
-from report_eval.text_helpers import prose
+from report_eval.text_helpers import PLACEHOLDER_RE, prose
+
+# "I" / "I'll" / "my" / "me": the report speaks for the firm ("we"), never as one adviser.
+_FIRST_SINGULAR = re.compile(r"\bI(?:'(?:m|ll|ve|d))?\b|\b(?:[Mm]y|[Mm]e|[Mm]yself)\b")
 
 # a lowercase word running straight into a capitalised sentence opener: "in relation to This ..."
 _SEAM = re.compile(r"\b[a-z]+ (This|We|You|Your|Our|It|The)\b")
@@ -19,6 +22,18 @@ def g4_no_template_seams_or_doubled_full_stops(ctx: Ctx) -> Result:
     ]
     problems += [f"seam: {m.group(0)!r}" for m in _SEAM.finditer(text)]
     return EvaluationReason(value=not problems, reason="; ".join(problems) or None)
+
+
+def g6_no_first_person_singular(ctx: Ctx) -> Result:
+    """Prose never slips from 'we' into 'I' / 'my' / 'me' (placeholders are ignored)."""
+    text = PLACEHOLDER_RE.sub("", prose(ctx.output.raw))
+    hits = [
+        text[max(m.start() - 30, 0) : m.end() + 30].replace("\n", " ")
+        for m in _FIRST_SINGULAR.finditer(text)
+    ]
+    return EvaluationReason(
+        value=not hits, reason="; ".join(repr(h) for h in hits) or None
+    )
 
 
 async def g1_written_in_1st_person_british_english(ctx: Ctx):
@@ -59,4 +74,5 @@ EVAL_CHECKS = [
     g4_no_template_seams_or_doubled_full_stops,
     g3_client_is_addressed_directly,
     g5_introduction_is_short_and_well_phrased,
+    g6_no_first_person_singular,
 ]

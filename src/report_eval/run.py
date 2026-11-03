@@ -2,6 +2,7 @@
 
 uv run python -m report_eval.run --client client_01_clean
 uv run python -m report_eval.run --all
+uv run python -m report_eval.run --client client_04_stretch --repeat 3                    # stability
 uv run python -m report_eval.run --client client_02_medium --draft-expected   # scaffold expected.json
 uv run python -m report_eval.run --all --check-expected                      # validate only
 """
@@ -16,6 +17,7 @@ from dotenv import load_dotenv
 from report_eval.dataset import build_dataset, clients
 from report_eval.expected import ExpectedError, draft_expected
 from report_eval.models import ClientInput, ReportOutput, build_meta
+from report_eval.stability import collect, render
 
 
 def expected_tools(names: list[str], args) -> int:
@@ -66,6 +68,12 @@ def main() -> None:
         action="store_true",
         help="validate expected.json against sources and exit",
     )
+    p.add_argument(
+        "--repeat",
+        type=int,
+        default=1,
+        help="evaluate each report N times and print per-check stability (PASS/FLAKY/FAIL)",
+    )
     args = p.parse_args()
     load_dotenv()
 
@@ -93,8 +101,11 @@ def main() -> None:
     def read_report(inp: ClientInput) -> ReportOutput:
         return ReportOutput.from_file(Path(args.report_dir) / f"{inp.client}.md")
 
-    report = dataset.evaluate_sync(read_report)
-    report.print(include_input=False, include_output=False, include_reasons=True)
+    report = dataset.evaluate_sync(read_report, repeat=args.repeat)
+    if args.repeat > 1:
+        print(render(collect(report)))
+    else:
+        report.print(include_input=False, include_output=False, include_reasons=True)
     failed = any(not a.value for case in report.cases for a in case.assertions.values())
     sys.exit(1 if failed else 0)
 
