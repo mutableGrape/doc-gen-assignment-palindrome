@@ -165,3 +165,27 @@ Changes:
 Tried and removed: positive/negative controls (the ideal plus 8 single-defect copies, each run
 several times). They exposed the e5 contradiction and two loose rubrics, but cost hundreds of judge
 calls per run, so they were taken out.
+
+
+## 013 - Client 04: second prompt optimisation pass
+
+Final optimisation pass using new improved evals. 
+
+Changes:
+1. `generate.py`: `temperature=0`, so a prompt change can be told apart from sampling noise (gpt-4o-mini
+   is still not fully deterministic). Placeholders may now carry their own `use_if`, gated by the same
+   yes/no call as sections; a condition written inside a prompt was ignored (the cost sentence leaked
+   into clients with no such question).
+2. `recommendation` prompt: add money only to the accounts the plan names (one of two similar
+   accounts); an account both added to and partly sold gets two paragraphs, the sale with its own
+   placeholder; never combine two actions; "unchanged" only where the notes agree it; never prose
+   "to be confirmed"; the timing placeholder sits in the committed-money sentence; pension
+   contributions sized within the allowance; "we", never "I".
+3. `fees` prompt: no restating the recommendations. New gated `total_cost` placeholder answers a
+   recorded question about charges (clients 02 and 03 asked one too, so they now get an answer).
+4. client_04 expected.json: two forbidden statements reworded because they clashed with required
+   ones (the judge read the required GIA top-up as "remaining balance into the existing GIA", and the
+   required "sized within the allowance" as a settled-fact breach).
+
+Results (single runs, credits limited): before 97.7% on client_04 (h1/h3 failing).
+

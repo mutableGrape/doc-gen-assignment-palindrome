@@ -8,25 +8,25 @@ This firm is authorised and regulated by the Financial Conduct Authority.
 
 ## Background & Objectives
 
-You both remain in a balanced risk profile of 5, which aligns well with your current investment approach. Your objectives and circumstances have not changed since our last meeting; you do not have any immediate income requirements from your portfolio. This advice reflects your preference to simplify your investments by disinvesting the joint General Investment Account and utilising the proceeds to top up your Stocks & Shares ISAs.
+You are both retired and have confirmed that your objectives and circumstances remain unchanged since our last review. You continue to be comfortable with a balanced approach to risk, which aligns with your agreed risk profile of 5. Your current focus is on simplifying your investment structure by disinvesting from the joint General Investment Account and reallocating the proceeds to your Stocks & Shares ISAs.
 
 The accounts covered by this report are as follows:
 
-| Account                        | Owner  | Type                          | Value          |
-|-------------------------------|--------|-------------------------------|-----------------|
-| Holloway Stocks & Shares ISA   | David  | Stocks & Shares ISA           | £61,000         |
-| Holloway Stocks & Shares ISA   | Susan  | Stocks & Shares ISA           | £58,500         |
-| Holloway General Investment Account | Joint | General Investment Account    | [TO BE CONFIRMED: current value of the joint GIA] |
+| Account                          | Owner  | Type                          | Value          |
+|----------------------------------|--------|-------------------------------|----------------|
+| Holloway Stocks & Shares ISA     | David  | Stocks & Shares ISA           | £61,000        |
+| Holloway Stocks & Shares ISA     | Susan  | Stocks & Shares ISA           | £58,500        |
+| Holloway General Investment Account | Joint  | General Investment Account     | [TO BE CONFIRMED: current value of the joint GIA] |
 
 ## Recommendations
 
 We recommend the following:
 
-You will disinvest from your joint General Investment Account in full, with the proceeds being used to top up both your Stocks & Shares ISAs. The total amount from the GIA will be split equally between the two ISAs. This approach will simplify your portfolio while still maximising your annual tax-efficient investment allowances. The investment amount for the top-up will be the full value of the joint GIA, [TO BE CONFIRMED: amount to be placed in the new account].
+We will disinvest the full value of your joint General Investment Account on the Holloway platform. This decision will simplify your investment structure and allow us to use the proceeds to top up both your Stocks & Shares ISAs for the new tax year. The amount to be sold from the joint GIA is [TO BE CONFIRMED: amount to be sold from the joint GIA]. 
 
-Your existing Stocks & Shares ISAs will remain unchanged and will be revisited at your next review. The proceeds from the GIA will provide a boost to both accounts without any other changes needed at this time. 
+We will then allocate the proceeds equally between your two Stocks & Shares ISAs, adding to David's ISA and Susan's ISA. The amount to be placed in each ISA is [TO BE CONFIRMED: amount to be placed in the new account]. 
 
-Please note that we will need to confirm the ongoing charges for both the Holloway platform and the specific fees associated with the investments once confirmed. These will be outlined in your report as well: [TO BE CONFIRMED: Holloway platform charge].
+We will confirm the ongoing charges for both the Holloway platform and the ISAs as part of the report. [TO BE CONFIRMED: Holloway platform charge].
 
 ## Tax Implications
 
@@ -36,7 +36,7 @@ The recommended disposal may create a capital gains tax liability, which would b
 
 ## Fees & Charges
 
-The initial charge for the transaction will be 0%. The ongoing fees and charges will include [TO BE CONFIRMED: Holloway platform charge] and [TO BE CONFIRMED: ongoing advice charge]. We will confirm these details in our final report.
+The ongoing fees and charges will include [TO BE CONFIRMED: Holloway platform charge] for the Stocks & Shares ISAs, as well as [TO BE CONFIRMED: ongoing advice charge] for our advisory services. The initial charge for this transaction is 0%. Please note that these figures will be confirmed in due course. In answer to your question about the ongoing charges after the changes, we will set out the verified charges before we proceed.
 
 ## Conclusion
 

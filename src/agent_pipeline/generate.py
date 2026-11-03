@@ -53,9 +53,15 @@ class ReportGenerator:
     def _build_section(self, section: dict, context: str, instructions: str) -> str:
         content = section["template"]
         for name, spec in section.get("placeholders", {}).items():
-            value = self._ask(f"{instructions}\n\n{spec['prompt']}", context)
+            # A placeholder may carry its own `use_if`, gated like a section; if it fails, it is
+            # left empty (a condition inside the prompt itself is ignored too often).
+            value = (
+                self._ask(f"{instructions}\n\n{spec['prompt']}", context)
+                if self._section_applies(spec, context, instructions)
+                else ""
+            )
             content = content.replace(f"<<{name}>>", value)
-        return content
+        return content.strip()
 
     def _ask(self, instruction: str, context: str) -> str:
         response = self._openai.chat.completions.create(
@@ -63,6 +69,7 @@ class ReportGenerator:
             messages=[
                 {"role": "user", "content": f"{context}\n\n---\n\n{instruction}"}
             ],
+            temperature=0,  # repeatable output, so a prompt change is measurable
         )
         return response.choices[0].message.content.strip()
 

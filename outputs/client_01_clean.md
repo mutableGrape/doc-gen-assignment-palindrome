@@ -8,28 +8,28 @@ This firm is authorised and regulated by the Financial Conduct Authority.
 
 ## Background & Objectives
 
-You are currently retired, with no expected changes to your circumstances or objectives in the near term. You remain comfortable with a moderate approach to risk, as previously agreed. Your primary objective for this meeting was to utilise this year's ISA allowance by transferring cash into your Stocks & Shares ISA.
+You have confirmed that there have been no changes to your circumstances or objectives since last year's review. You remain comfortable with a moderate risk profile, which we agreed is a level 4. Currently, you do not require any income from your portfolio and do not expect that to change in the near term.
 
 The accounts covered by this report are as follows:
 
-| Account                          | Owner    | Type                     | Value        |
-|----------------------------------|----------|--------------------------|--------------|
-| Holloway Stocks & Shares ISA     | Margaret | Stocks & Shares ISA      | £52,000      |
-| Holloway Cash Account            | Margaret | Cash Account             | £25,000      |
+| Account                          | Owner    | Type                     | Value       |
+|----------------------------------|----------|--------------------------|-------------|
+| Holloway Stocks & Shares ISA     | Margaret | Stocks & Shares ISA      | £52,000     |
+| Holloway Cash Account             | Margaret | Cash Account             | £25,000     |
 
 ## Recommendations
 
 We recommend the following:
 
-You should move £20,000 from your Holloway Cash Account into your Holloway Stocks & Shares ISA. This move will utilise your ISA allowance for this year, allowing the funds to grow tax-efficiently within the ISA wrapper. It is important to note that this transfer does not involve selling any existing investments, so there are no disposals. [TO BE CONFIRMED: amount to be moved to the Stocks & Shares ISA].
+We will move £20,000 from your Holloway cash account into your Stocks & Shares ISA. This action allows you to utilise this year's ISA allowance while keeping your investments within the tax-efficient wrapper. The amount to be placed in the Stocks & Shares ISA is £20,000. 
 
-Your existing Stocks & Shares ISA will remain unchanged and will be revisited at the next review. Additionally, your Holloway Cash Account will continue to accumulate cash as needed, and we will address any potential future decisions regarding gifting to your grandchildren in our next meeting.
+The Holloway cash account will remain unchanged and will be revisited at the next review. 
 
-Please note that [TO BE CONFIRMED: Holloway platform charge] will apply.
+[TO BE CONFIRMED: Holloway platform charge]
 
 ## Fees & Charges
 
-The initial charge for this transaction is 0%. Ongoing fees and charges will apply, which include [TO BE CONFIRMED: Holloway platform charge] and [TO BE CONFIRMED: ongoing advice charge].
+The initial charge for the top-up of your Stocks & Shares ISA will be 0%. Ongoing fees and charges will include [TO BE CONFIRMED: Holloway platform charge] and [TO BE CONFIRMED: ongoing advice charge].
 
 ## Conclusion
 
