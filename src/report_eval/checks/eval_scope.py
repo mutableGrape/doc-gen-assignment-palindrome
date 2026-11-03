@@ -30,7 +30,7 @@ def e1_background_has_no_amounts(ctx: Ctx) -> Result:
 async def e2_recommendations_are_clear(ctx: Ctx):
     return await judge(
         ctx,
-        "Recommendations says what the client should do and why, with the amounts involved, and mentions the relevant platform charges (as placeholders if not given).",
+        "Recommendations says what the client should do and why, with the amounts involved, and mentions the relevant platform charges (as placeholders if not given). Where a source only gives a vague or stale figure for an amount (e.g. 'a little over £X'), a [TO BE CONFIRMED: ...] placeholder in place of that amount is correct and must not be penalised; do not require a firm figure that the sources do not support. It must still state the action, which account the money comes from, where it goes, and how it is split.",
     )
 
 

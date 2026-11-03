@@ -8,24 +8,26 @@ This firm is authorised and regulated by the Financial Conduct Authority.
 
 ## Background & Objectives
 
-You have confirmed that there have been no changes to your circumstances or objectives since last year's review, and you remain comfortable with a moderate approach to risk, which aligns with your agreed risk profile of 4. You have indicated that you do not require any income from your portfolio at present and do not expect that to change in the near term. Additionally, you are considering potential future gifting to your grandchildren, although that is not a priority at this time.
+You are retired and confirmed that there have been no changes to your circumstances or objectives since last year's review. You remain comfortable with the moderate approach to risk we agreed previously. During our recent meeting, you expressed a desire to utilise this year's ISA allowance by transferring cash from your deposit account into your Stocks & Shares ISA. Overall, you have no immediate income requirements from the portfolio.
 
 The accounts covered by this report are as follows:
 
-| Account        | Owner            | Type                    | Value    |
-|----------------|------------------|-------------------------|----------|
-| H-ISA-01       | Margaret Hughes   | Stocks & Shares ISA     | £52,000  |
-| H-CASH-01      | Margaret Hughes   | Cash Account            | £25,000  |
+| Account                        | Owner    | Type                      | Value          |
+|-------------------------------|----------|---------------------------|----------------|
+| Holloway Stocks & Shares ISA   | Margaret | Stocks & Shares ISA       | £52,000        |
+| Holloway Cash Account          | Margaret | Cash Account              | £25,000        |
 
 ## Recommendations
 
 We recommend the following:
 
-We recommend that you transfer £20,000 from your Holloway Cash Account into your Stocks & Shares ISA to make use of this year’s ISA allowance. This transfer allows you to benefit from the tax advantages associated with the ISA wrapper, as no tax is payable on the growth of investments within an ISA. There will be no sale of existing investments to execute this transfer, ensuring that your portfolio remains intact. Please note that the ongoing platform charge will be [TO BE CONFIRMED: platform charge].
+You should proceed with transferring £20,000 from your cash account into your Stocks & Shares ISA. This will allow you to take full advantage of this year's ISA allowance, helping to shield your investment growth from tax within the ISA wrapper. It’s important to note that no existing investments will be sold to facilitate this transfer, so there will be no capital gains tax implications. 
+
+As this is a straightforward top-up, your ongoing fees will include a [TO BE CONFIRMED: platform charge].
 
 ## Fees & Charges
 
-The ongoing fees and charges that apply to your investments include a platform charge and an ongoing advice charge, both of which will be confirmed in the next steps. Please note that these charges are [TO BE CONFIRMED: platform charge and ongoing advice charge].
+You will have an initial charge of 0% associated with the top-up to your Stocks & Shares ISA. The ongoing fees include a [TO BE CONFIRMED: platform charge] for both your Stocks & Shares ISA and your Cash Account, as well as a [TO BE CONFIRMED: ongoing advice charge].
 
 ## Conclusion
 
