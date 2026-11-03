@@ -1,6 +1,6 @@
 {
   "document_title": "Investment Advice Report",
-  "global_instructions": "You are writing sections of a financial advice report addressed to the client. Write in clear British English, in the first person ('we'). Output only the text for the section itself, with no extra headings or commentary.",
+  "global_instructions": "You are writing sections of a financial advice report addressed to the client. Write in clear British English, in the first person ('we'). Output only the text for the section itself, with no extra headings or commentary. Output only the requested fragment, which is inserted into fixed template text: no intro or closing sentences, and do not repeat content that belongs to other sections. Be concise. Address the client as 'you', never by name or as 'she'/'he'. Never state or estimate charges or capital gains tax: flag them as [TO BE CONFIRMED: <what is needed>].",
   "sections": [
     {
       "id": "introduction",
@@ -9,7 +9,7 @@
       "template": "Further to our recent discussions, we are writing to set out our advice in relation to <<scope>>. This advice is based on the information currently available to us.\n\nThis firm is authorised and regulated by the Financial Conduct Authority.",
       "placeholders": {
         "scope": {
-          "prompt": "Say which of the client's accounts this report relates to."
+          "prompt": "Complete the sentence 'we are writing to set out our advice in relation to ...' by naming which of the client's accounts this report covers. Output ONLY a short noun phrase starting with a lowercase letter, with no full stop, e.g. 'your Stocks & Shares ISA'. It must not be a sentence."
         }
       }
     },
@@ -20,10 +20,10 @@
       "template": "<<summary>>\n\nThe accounts covered by this report are as follows:\n\n<<holdings_table>>",
       "placeholders": {
         "summary": {
-          "prompt": "Summarise the client's objectives and circumstances."
+          "prompt": "Write one short paragraph (max four sentences) on the client's objectives, risk profile (stated exactly as in the report request) and circumstances. Include no monetary amounts."
         },
         "holdings_table": {
-          "prompt": "List the client's accounts and their values as a markdown table."
+          "prompt": "Output ONLY a markdown table of the client's accounts and values (columns: Account, Owner, Type, Value), with no text before or after it."
         }
       }
     },
@@ -34,7 +34,7 @@
       "template": "We recommend the following:\n\n<<recommendation>>",
       "placeholders": {
         "recommendation": {
-          "prompt": "Describe what the client should do with their investments, and why."
+          "prompt": "Describe what the client should do with their investments, and why. Mention the platform charge as [TO BE CONFIRMED: platform charge]."
         }
       }
     },
@@ -64,12 +64,8 @@
       "id": "conclusion",
       "title": "Conclusion",
       "use_if": "always",
-      "template": "<<risk_warning>>\n\nIf you are happy to proceed with our recommendations, please let us know and we will implement them for you.",
-      "placeholders": {
-        "risk_warning": {
-          "prompt": "Add the standard risk warning about investments."
-        }
-      }
+      "template": "The value of investments can fall as well as rise and you may get back less than you invest. Past performance is not a guide to future returns.\n\nIf you are happy to proceed with our recommendations, please let us know and we will implement them for you.",
+      "placeholders": {}
     }
   ]
 }

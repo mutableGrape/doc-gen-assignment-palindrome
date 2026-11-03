@@ -52,3 +52,7 @@ Decisions made:
 1. A static training-data style object helps with ensuring right values are present. To minimise potential drift, this should be a structured delta on the db rather than a copy of the information. I've added a script to help generate it, but the contents are to be hand-reviewed and updated in this case. 
 
 
+
+## 004 - Client 01: Minimal Prompt Changes
+
+Intentionally used minimal prompt changes to take client_01 from ~72% to 100% on 4/4 runs.
