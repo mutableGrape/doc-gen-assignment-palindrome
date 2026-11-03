@@ -6,6 +6,7 @@ from report_eval.checks import (
     eval_figures,
     eval_holdings_table,
     eval_scope,
+    eval_statements,
     eval_structure,
     eval_style,
 )
@@ -16,6 +17,7 @@ _MODULES = [
     eval_holdings_table,
     eval_fees_tax,
     eval_scope,
+    eval_statements,
     eval_client_specific,
     eval_style,
 ]

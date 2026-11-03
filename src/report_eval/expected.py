@@ -12,7 +12,14 @@ expected.json holds only what the DB cannot know, and every entry carries a `why
   derived_amounts:   [{value, why}]  computed from sources; allowed in the report, not required.
   forbidden_amounts: [{value, why}]  traps the report must not show (figures from distractor
                      documents are already caught by b2).
-  forbidden_terms:   [{value, why}]  wording the report must not use.
+  forbidden_terms:   [{value, why}]  wording the report must not use (substring, case-insensitive).
+  required_statements:  [{value, why}]  one atomic fact or action the report must convey, written as
+                     a plain sentence ("The offshore bond is left unchanged and revisited at the next
+                     review"). Judged by an LLM against the report; keep each to ONE claim.
+  forbidden_statements: [{value, why}]  one atomic claim the report must NOT make, same style
+                     ("Presents the gross £850,000 as available to invest without the £200,000").
+  outstanding_items:    [{value, why}]  something unknown or awaited that must be flagged as
+                     [TO BE CONFIRMED: ...] (or TBC in the table), never assumed or invented.
 
 A `why` starting "CONFIRM" is an unreviewed draft entry and will not load until it is rewritten.
 """
@@ -76,6 +83,9 @@ class Expected(_Strict):
     derived_amounts: list[Amount] = []
     forbidden_amounts: list[Amount] = []
     forbidden_terms: list[Term] = []
+    required_statements: list[Term] = []
+    forbidden_statements: list[Term] = []
+    outstanding_items: list[Term] = []
 
 
 class ExpectedError(Exception):
@@ -181,6 +191,9 @@ def resolve(exp: Expected, meta: CaseMeta) -> dict:
             "derived_amounts": [a.value for a in exp.derived_amounts],
             "forbidden_amounts": [a.value for a in exp.forbidden_amounts],
             "forbidden_terms": [t.value for t in exp.forbidden_terms],
+            "required_statements": [t.value for t in exp.required_statements],
+            "forbidden_statements": [t.value for t in exp.forbidden_statements],
+            "outstanding_items": [t.value for t in exp.outstanding_items],
         }.items()
         if v
     }

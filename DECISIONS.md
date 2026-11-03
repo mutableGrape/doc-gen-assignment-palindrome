@@ -80,3 +80,47 @@ Open: judge d5 occasionally rejects the request's 0.5% initial charge
 3. New checks: e5 (Introduction covers every requested account, incl. a new one) and client_03 `forbidden_terms` (grandchildren, trip, flowers: small talk the notes say changes nothing)
 4. Residual: client_02 states £45,000; client_03 states £120,000 in Background. Now caught in eval. 
 5. Refactoring the Judge context to reduce input tokens needed. 
+
+
+## 008 - Client 04 (stretch): Predicted Issues (pre-run)
+
+Approach for this client: predict issues, improve the eval pipeline first, test on 'ideal' output, then delegate to the coding agent to make the improvements. 
+
+Potential issues identified:
+
+| # | Issue | Evidence | Correct handling |
+|---|---|---|---|
+| 1 | Stale joint Holloway GIA | DB £240,000 valued 28 Feb (snapshot 30 Apr); statement PNG repeats £240,000 (28 Feb); notes 20 May: live "around £255,000" | Newer but vague, so `[TO BE CONFIRMED: current value of the Holloway joint GIA]`; never show £240k or £255k |
+| 2 | Caroline's Meridian cash: `value: null`, `valuation_date: null` | DB; notes say she will confirm | Row present, Value = TBC; flag as outstanding item |
+| 3 | Closed `M4-OLD-C` (£0) | DB status closed; notes say disregard | Absent from table (same platform/owner/type as the live cash account, so a naive prompt can double-list it) |
+| 4 | Joint accounts duplicated under both holders (3 of them) | DB | Already deduped in `dedupe_accounts` |
+| 5 | Request gives no investment amount ("see meeting notes"); current rule is "amount from request only, else state none" | report_request | Real amounts only in notes: £850,000 received, £200,000 committed to bridging loan. Spec wants amounts in Recommendations, so the current prompt will likely drop them |
+| 6 | Earnout up to £400,000 | Notes: contingent, unreceived, up to 2 years | Must not be treated as investable; at most mentioned as excluded/uncertain, never added to the pot |
+| 7 | £650,000 available is derived; bridging-loan repayment timing unconfirmed | Notes (adviser action item) | Do not assert as fact; post-repayment amount TBC/pending (matches draft `derived_amounts`) |
+| 8 | Distractor figures: Pendle £775k, Sutton £785k | platform_market_update, portfolio_pack | Already excluded via `context_files`; add as `forbidden_amounts` to prove it |
+| 9 | Non-advice noise: France property, grandchildren school fees, charity | Notes: "nothing should be actioned" | Keep out of Recommendations/Background (grey area: one-line objective; recommend omit) |
+| 10 | Pension allowance worry | Notes: report must not commit to a figure breaching limits | No SIPP/ISA contribution figures; allocation = TBC |
+| 11 | Offshore bond in scope but "leave as is" | Notes | Table row plus "no change, revisit at next review"; no sale recommended |
+| 12 | Three platforms | DB | Platform charges per platform (Holloway, Brightwell, Meridian), all TBC; 0.5% initial charge one-off (request) |
+| 13 | Notes say snapshot was "struck in February", but DB `snapshot_date` is 30 Apr; only one account is Feb-dated | DB vs notes | Rely on per-account `valuation_date`, not `snapshot_date` |
+| 14 | fde_notes are thin: mention multi-platform and proceeds-in-several-forms, but not null/closed accounts, stale GIA, missing request amount or earnout | fde_notes.md | Treat as incomplete, as warned |
+| 15 | Joint clients; template says "your annual exempt amount" (singular) | config template | Fixed template wording; flag as limitation (two allowances) |
+| 16 | Tax section needed: partial sale of Holloway joint GIA | request "Yes" | Include with CGT TBC (`sells_investments` + `use_if` should handle it) |
+
+
+## 009 - Client 04: Tightened expected.json
+
+Defects found by reading:
+1. Recommendations call the full £850,000 "new money to be invested", ignoring the £200,000 already committed to the loan (prediction 5 was half right: the model took £850k from the notes but not the deduction).
+2. Background mentions grandchildren's school fees and charity (issue 9) and the "emotional period". Passed only because `forbidden_terms` was empty.
+3. "The remaining funds will be added to the joint GIA" misreads the agreed plan (the remaining balance goes to the new joint account).
+4. No "offshore bond unchanged, revisit at next review" statement (issue 11).
+
+Additional keys added to `expected.json` to handle required and forbidden statements as well as outstanding items. 
+
+
+## 010 - Client 04: Eval gaps, new checks, ideal report
+
+Ideal report added to ensure target state is clear and evals are correctly aligned to the goal. 
+
+Using the ideal report and issues context, updates were made to the evals to include more cases while ensuring alignment with previous clients. 

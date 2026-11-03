@@ -111,3 +111,25 @@ def test_shipped_files_load():
         "client_04_stretch",
     ):
         assert _meta(c).has_expected
+
+
+def test_statement_keys_resolve_to_flat_lists(tmp_path):
+    doc = {
+        "required_statements": [
+            {"value": "Bond is unchanged.", "why": "notes: leave as is"}
+        ],
+        "forbidden_statements": [
+            {"value": "Sells the bond.", "why": "notes: leave as is"}
+        ],
+        "outstanding_items": [{"value": "Cash balance.", "why": "notes: to confirm"}],
+    }
+    got = _load(tmp_path, doc)
+    assert got["required_statements"] == ["Bond is unchanged."]
+    assert got["forbidden_statements"] == ["Sells the bond."]
+    assert got["outstanding_items"] == ["Cash balance."]
+
+
+def test_statement_needs_evidence(tmp_path):
+    assert "why" in _error(
+        tmp_path, {"required_statements": [{"value": "x", "why": ""}]}
+    )

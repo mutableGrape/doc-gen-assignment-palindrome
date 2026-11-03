@@ -35,16 +35,23 @@ def b2_no_distractor_figures(ctx: Ctx) -> Result:
     leaked = (amounts_in(meta.distractors) - _allowed_money(meta)) & amounts_in(
         report.raw
     )
-    terms = [
-        t
-        for t in meta.expected.get("forbidden_terms", [])
-        if t.lower() in report.raw.lower()
-    ]
     return EvaluationReason(
-        value=not leaked and not terms,
-        reason=f"leaked figures: {format_money(leaked)}; terms: {terms}"
-        if leaked or terms
-        else None,
+        value=not leaked,
+        reason=f"leaked figures: {format_money(leaked)}" if leaked else None,
+    )
+
+
+def b5_no_forbidden_terms(ctx: Ctx) -> Result:
+    """None of the client's out-of-scope wording (aspirations, small talk) appears"""
+    if (failed := no_expected(ctx)) is not None:
+        return failed
+    report, meta = ctx.output, ctx.metadata
+    terms = meta.expected.get("forbidden_terms")
+    if terms is None:
+        return {}
+    hits = [t for t in terms if t.lower() in report.raw.lower()]
+    return EvaluationReason(
+        value=not hits, reason=f"forbidden terms present: {hits}" if hits else None
     )
 
 
@@ -93,4 +100,5 @@ EVAL_CHECKS = [
     b2_no_distractor_figures,
     b3_live_not_stale_values,
     b4_expected_amounts_only,
+    b5_no_forbidden_terms,
 ]

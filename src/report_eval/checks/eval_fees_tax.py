@@ -89,10 +89,44 @@ def d4_placeholder_format_is_correct(ctx: Ctx) -> Result:
     )
 
 
+def d6_platform_charge_placeholder_per_platform(ctx: Ctx) -> Result:
+    """With several platforms, Fees & Charges has a platform-charge placeholder naming each one"""
+    platforms = {
+        a["platform"] for a in ctx.metadata.db_accounts().values() if a.get("platform")
+    }
+    if len(platforms) < 2:
+        return {}
+    text = ctx.output.find_section("fee")
+    if text is None:
+        return EvaluationReason(value=False, reason="no Fees & Charges section")
+    marks = [m.lower() for m in PLACEHOLDER_RE.findall(text)]
+    missing = sorted(
+        p
+        for p in platforms
+        if not any(p.lower() in m and "platform" in m for m in marks)
+    )
+    return EvaluationReason(
+        value=not missing,
+        reason=f"no platform-charge placeholder naming: {missing}" if missing else None,
+    )
+
+
+def d7_placeholders_contain_no_figures(ctx: Ctx) -> Result:
+    """[TO BE CONFIRMED: ...] text names the missing item without quoting any figure"""
+    bad = [
+        m for m in PLACEHOLDER_RE.findall(ctx.output.raw) if re.search(r"[£%]|\d", m)
+    ]
+    return EvaluationReason(
+        value=not bad, reason=f"placeholders containing figures: {bad}" if bad else None
+    )
+
+
 EVAL_CHECKS = [
     d1_no_unsourced_rates,
     d2_fee_placeholders_present,
     d3_initial_vs_ongoing_charge,
     d4_placeholder_format_is_correct,
     d5_fee_rates_not_asserted_without_placeholder,
+    d6_platform_charge_placeholder_per_platform,
+    d7_placeholders_contain_no_figures,
 ]

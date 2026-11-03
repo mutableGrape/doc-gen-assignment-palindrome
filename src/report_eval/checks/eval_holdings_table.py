@@ -87,9 +87,34 @@ def c4_excluded_accounts_are_absent(ctx: Ctx) -> Result:
         return {}
     rows = _rows(report)
     hits = [p for p in excluded if any(_matches(r, p) for r in rows)]
+    # A closed account can look identical to its live twin, so also reject any row that says so.
+    hits += [
+        f"row says closed: {r[0]}"
+        for r in rows
+        if re.search(r"\bclosed\b", " ".join(r), re.I)
+    ]
     return EvaluationReason(
         value=not hits,
         reason=f"excluded accounts present: {hits}" if hits else None,
+    )
+
+
+def c9_no_unexpected_rows(ctx: Ctx) -> Result:
+    """The table has no rows beyond the expected accounts (no invented or planned accounts)"""
+    if (failed := no_expected(ctx)) is not None:
+        return failed
+    report, meta = ctx.output, ctx.metadata
+    accounts = meta.expected.get("accounts")
+    if accounts is None:
+        return {}
+    extra = [
+        r[0]
+        for r in _rows(report)
+        if not any(_matches(r, a["match"]) for a in accounts)
+    ]
+    return EvaluationReason(
+        value=not extra,
+        reason=f"rows not in expected accounts: {extra}" if extra else None,
     )
 
 
@@ -181,4 +206,5 @@ EVAL_CHECKS = [
     c6_table_directly_follows_its_lead_in,
     c7_table_values_match,
     c8_values_have_pound_sign,
+    c9_no_unexpected_rows,
 ]

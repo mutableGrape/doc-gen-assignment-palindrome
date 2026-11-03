@@ -1,0 +1,187 @@
+{
+  "schema_version": 2,
+  "overrides": {
+    "H4-GIA-HJ": {
+      "value": "TBC",
+      "why": "Notes (20 May, newer than DB 28 Feb) say 'around £255,000': inexact, so unconfirmed; DB £240,000 is stale (statement_summary.png shows the same 28 Feb figure)"
+    }
+  },
+  "amounts": [
+    {
+      "value": "£850,000",
+      "why": "Notes: completion payment received, in solicitor's client account"
+    },
+    {
+      "value": "£200,000",
+      "why": "Notes: committed to repaying the bridging loan, so not available to invest"
+    }
+  ],
+  "derived_amounts": [
+    {
+      "value": "£650,000",
+      "why": "Completion £850,000 less bridging loan £200,000 (derived, not stated in notes; repayment timing still unconfirmed)"
+    }
+  ],
+  "forbidden_amounts": [
+    {
+      "value": "£255,000",
+      "why": "Notes 20 May: joint Holloway GIA 'around £255,000' seen live, inexact and unverified; must be TBC, never stated as a figure"
+    },
+    {
+      "value": "£400,000",
+      "why": "Notes: earnout 'up to £400,000' is contingent and unreceived; not investable, so omitted from the report (open decision 008: could instead be mentioned as excluded)"
+    },
+    {
+      "value": "£775,000",
+      "why": "platform_market_update.docx: Pendle Global Fund platform aggregate, not a client holding"
+    },
+    {
+      "value": "£785,000",
+      "why": "portfolio_pack.docx: Sutton Strategic Fund platform AUM, not a client holding"
+    }
+  ],
+  "forbidden_terms": [
+    {
+      "value": "grandchild",
+      "why": "Notes: school fees for grandchildren are future aspirations, 'nothing should be actioned on them in this report'"
+    },
+    {
+      "value": "school fees",
+      "why": "Notes: future aspiration, not to be actioned in this report"
+    },
+    {
+      "value": "charit",
+      "why": "Notes: possible charitable donation is a future aspiration, not to be actioned in this report"
+    },
+    {
+      "value": "France",
+      "why": "Notes: property in France is not being pursued and has no bearing on the advice"
+    },
+    {
+      "value": "emotional",
+      "why": "Notes colour about the sale being 'slightly emotional'; Background must be a high-level summary, not a transaction story"
+    },
+    {
+      "value": "grandkid",
+      "why": "Same aspiration as 'grandchild' (school fees for grandchildren), alternative wording"
+    },
+    {
+      "value": "tuition",
+      "why": "Same aspiration as 'school fees', alternative wording; nothing is to be actioned on it"
+    },
+    {
+      "value": "donat",
+      "why": "Notes: possible charitable donation is a future aspiration, not to be actioned in this report"
+    },
+    {
+      "value": "philanthrop",
+      "why": "Same aspiration as 'charit', alternative wording"
+    },
+    {
+      "value": "property in",
+      "why": "Notes: the France property tangent 'has no bearing on the advice'; any property mention is out of scope"
+    }
+  ],
+  "required_statements": [
+    {
+      "value": "The £850,000 completion payment has been received and £200,000 of it is committed to repaying a bridging loan, so it is not available to invest.",
+      "why": "Notes: £850,000 received on completion; £200,000 of it already committed to repaying the bridging loan, repayment due shortly"
+    },
+    {
+      "value": "Both of the clients' ISA allowances are to be used for the new tax year, funded from the sale proceeds.",
+      "why": "Notes, plan for the available proceeds: 'use both ISA allowances for the new tax year'; request: ISA top-ups"
+    },
+    {
+      "value": "Pension contributions are to be made into both SIPPs, sized to stay within each person's annual allowance, without committing to a contribution figure.",
+      "why": "Notes: 'pension contributions into both SIPPs up to the appropriate level'; James worried about over-contributing and the adviser said the report would not commit to a figure that breached limits"
+    },
+    {
+      "value": "The Holloway joint General Investment Account is to be topped up with part of the proceeds.",
+      "why": "Notes: 'add to the Holloway joint GIA'; request: contribution to the joint GIA"
+    },
+    {
+      "value": "A portion of the Holloway joint General Investment Account is to be sold (disinvested) and the account rebalanced.",
+      "why": "Notes: 'disinvest a portion of the Holloway joint GIA and rebalance it'; request: Selling existing investments = Yes"
+    },
+    {
+      "value": "Whatever remains of the available proceeds after the ISA, SIPP and Holloway joint GIA contributions goes into a new jointly-held investment account.",
+      "why": "Notes: 'place the remaining balance into a new jointly-held investment account' (a naive read adds the remainder to the existing GIA)"
+    },
+    {
+      "value": "The Meridian offshore investment bond is left unchanged for now and will be revisited at the next review; no sale or switch is recommended.",
+      "why": "Notes: 'agreed to leave it as it is for now and revisit at the next review'"
+    },
+    {
+      "value": "The advice is weighed against the clients' goal of replacing James's income when he steps back from full-time work in about three years.",
+      "why": "Notes: overriding objective, 'everything we recommend should be weighed against that three-year goal'"
+    }
+  ],
+  "forbidden_statements": [
+    {
+      "value": "Presents the gross £850,000 as the amount to invest, as new money, or as the amount available, without the £200,000 bridging-loan commitment deducted or stated alongside it.",
+      "why": "Notes: £200,000 is committed to the loan; investing the gross figure would over-commit the clients' money (baseline defect, entry 009)"
+    },
+    {
+      "value": "Counts the deferred earnout, or any money not yet received, as available to invest, or adds it to any total or allocation.",
+      "why": "Notes: earnout is contingent on revenue targets, 'not guaranteed', none received"
+    },
+    {
+      "value": "States, implies or recommends that any money is already available from the earnout, or gives a date or amount for earnout payments.",
+      "why": "Notes: earnout payable over two years and contingent; no amount or date can be relied on"
+    },
+    {
+      "value": "Recommends selling, switching, surrendering or otherwise changing the Meridian offshore investment bond.",
+      "why": "Notes: bond left as it is for now, revisit at next review"
+    },
+    {
+      "value": "States or commits to a specific pension contribution, or says that a contribution is within the allowance or limits as a settled fact.",
+      "why": "Notes: report 'would not commit to a figure that breached the limits'; allowances not yet checked"
+    },
+    {
+      "value": "States a capital gains tax rate, liability or gain figure, or says the disposal will (rather than may) create a liability.",
+      "why": "Spec: say the disposal MAY create a CGT liability against the annual exempt amount; the gain is unknown"
+    },
+    {
+      "value": "Describes the new joint investment account as an existing account, or lists it among the existing accounts covered.",
+      "why": "Request: 'a new joint account'; it does not exist yet"
+    },
+    {
+      "value": "Says the remaining proceeds are added to the existing Holloway joint General Investment Account instead of the new joint account.",
+      "why": "Notes: remaining balance goes to the NEW jointly-held account (baseline defect, entry 009)"
+    },
+    {
+      "value": "Mentions the clients' emotional state, the personal history of the business sale, grandchildren, school fees, charitable giving or the French property.",
+      "why": "Notes: tangents / future aspirations, 'nothing should be actioned on them in this report'; Background is a high-level summary"
+    }
+  ],
+  "outstanding_items": [
+    {
+      "value": "The current value of the Holloway joint General Investment Account.",
+      "why": "DB £240,000 is stale (28 Feb); notes give only 'around £255,000' live, so unconfirmed"
+    },
+    {
+      "value": "The balance of Caroline's Meridian cash account.",
+      "why": "DB value is null; notes: she could not remember the balance and will confirm it"
+    },
+    {
+      "value": "The timing of the bridging-loan repayment (and so when the remaining proceeds are free to invest).",
+      "why": "Notes action list: 'confirm the timing of the bridging-loan repayment'"
+    },
+    {
+      "value": "How the available proceeds are split between the ISAs, the SIPPs, the Holloway joint GIA and the new joint account.",
+      "why": "No allocation amounts are given anywhere in the sources"
+    },
+    {
+      "value": "The size of each SIPP contribution.",
+      "why": "Not stated in the sources; to be sized against each person's annual allowance"
+    },
+    {
+      "value": "The amount of the Holloway joint GIA to be sold, and the resulting capital gain or liability.",
+      "why": "Notes: 'a portion' only; capital gains position 'to set out' once known"
+    },
+    {
+      "value": "The platform charge for each of the three platforms (Holloway, Brightwell, Meridian) and the ongoing advice charge.",
+      "why": "Notes: adviser will set out charges 'once I had verified each platform's figures rather than estimate'"
+    }
+  ]
+}
