@@ -2,43 +2,37 @@
 
 ## Introduction
 
-Further to our recent discussions, we are writing to set out our advice in relation to your Stocks & Shares ISAs and the joint General Investment Account. This advice is based on the information currently available to us.
+Further to our recent discussions, we are writing to set out our advice in relation to your jointly-held General Investment Account. This advice is based on the information currently available to us.
 
 This firm is authorised and regulated by the Financial Conduct Authority.
 
 ## Background & Objectives
 
-You both confirmed your objectives and circumstances remain unchanged since the last review, and you are comfortable with a balanced approach to risk, as reflected in your agreed risk profile of 5. As you transition into retirement, our focus will be on simplifying your investment structure while ensuring your portfolios align with your financial goals. We will concentrate on maximising the advantages of both your Stocks & Shares ISAs.
+You have confirmed that your objectives and circumstances are unchanged and that you remain comfortable with the balanced approach to risk we agreed, which is reflected in your agreed risk profile of 5 (balanced). Your primary focus is on simplifying your investment strategy while ensuring that your portfolios are appropriately funded for the new tax year.
 
 The accounts covered by this report are as follows:
 
-| Account                       | Owner  | Type                          | Value               |
-|------------------------------|--------|-------------------------------|---------------------|
-| Holloway Stocks & Shares ISA  | David  | Stocks & Shares ISA           | £61,000             |
-| Holloway Stocks & Shares ISA  | Susan  | Stocks & Shares ISA           | £58,500             |
-| Holloway General Investment Account | Joint  | General Investment Account     | [TO BE CONFIRMED: latest value of Joint General Investment Account] |
+| Account                         | Owner  | Type                           | Value            |
+|--------------------------------|--------|--------------------------------|------------------|
+| Holloway Stocks & Shares ISA   | David  | Stocks & Shares ISA            | £61,000          |
+| Holloway Stocks & Shares ISA   | Susan  | Stocks & Shares ISA            | £58,500          |
+| Holloway General Investment Account | Joint | General Investment Account      | [TO BE CONFIRMED: value from meeting notes] |
 
 ## Recommendations
 
 We recommend the following:
 
-You should proceed with disinvesting your joint General Investment Account, with the full proceeds being used to top up both your Stocks & Shares ISAs. This will allow you to maximise your tax-efficient allowance as you look to use the funds for future investments. The latest value of the jointly-held General Investment Account is [TO BE CONFIRMED: latest value of General Investment Account]. 
-
-Additionally, we will ensure that the process aligns with your agreed balanced risk profile. The ongoing platform charge will be [TO BE CONFIRMED: platform charge].
+We recommend that you proceed with disinvesting the joint General Investment Account in full, using the proceeds to top up both your Stocks & Shares ISAs. This approach allows you to maximise your tax-efficient savings for the new tax year. As of our review on 14 May 2026, the current value of the joint GIA is noted as being unconfirmed and slightly above £45,000. The investment returns from disinvesting the GIA will enhance the growth potential of your ISAs, which are aligned with your agreed balanced risk profile. Please also note that the ongoing platform charge is [TO BE CONFIRMED: platform charge].
 
 ## Tax Implications
 
 The recommended disposal may create a capital gains tax liability, which would be assessed against your annual exempt amount.
 
-We recommend disinvesting the joint General Investment Account, which has a value of [TO BE CONFIRMED: latest value of General Investment Account], and using the proceeds to top up both Stocks & Shares ISAs for the new tax year, split equally between the two ISAs. 
-
-[TO BE CONFIRMED: capital gains tax liability on the sale of the joint General Investment Account].
+[TO BE CONFIRMED: capital gains tax liability on the sale of the joint General Investment Account]
 
 ## Fees & Charges
 
-We recommend that you sell the entire balance of your General Investment Account, which is currently valued at [TO BE CONFIRMED: latest value of General Investment Account], to top up both your Stocks & Shares ISAs. This will allow you to utilise your remaining tax allowance for the new year effectively.
-
-The ongoing fees and charges will include a [TO BE CONFIRMED: platform charge] for the Holloway platform and [TO BE CONFIRMED: ongoing advice charge]. There is a one-off initial charge of 0% for this transaction.
+The ongoing fees for your accounts will include a platform charge from Holloway of [TO BE CONFIRMED: platform charge] and an ongoing advice charge of [TO BE CONFIRMED: ongoing advice charge]. There is an initial one-off charge of 0% for the advice provided.
 
 ## Conclusion
 
