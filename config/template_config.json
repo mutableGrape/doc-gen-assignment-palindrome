@@ -1,6 +1,6 @@
 {
   "document_title": "Investment Advice Report",
-  "global_instructions": "You are writing sections of a financial advice report addressed to the client. Write in clear British English, in the first person ('we'). Output only the text for the section itself, with no extra headings or commentary. Output only the requested fragment, which is inserted into fixed template text: no intro or closing sentences, and do not repeat content that belongs to other sections. Be concise. Address the client as 'you', never by name or as 'she'/'he'. Never state or estimate charges or capital gains tax: flag them as [TO BE CONFIRMED: <what is needed>].",
+  "global_instructions": "You are writing sections of a financial advice report addressed to the client. Write in clear British English, in the first person ('we'). Output only the text for the section itself, with no extra headings or commentary. Output only the requested fragment, which is inserted into fixed template text: no intro or closing sentences, and do not repeat content that belongs to other sections. Be concise. Address the client as 'you', never by name or as 'she'/'he'. Never state or estimate charges or capital gains tax: flag them as [TO BE CONFIRMED: <what is needed>]. Where figures differ between sources, use the most recent by date and never quote or mention the older, superseded figure; treat vague figures ('around', 'over') as unconfirmed, not exact. Leave out detail irrelevant to the advice (e.g. holidays).",
   "sections": [
     {
       "id": "introduction",
@@ -23,7 +23,7 @@
           "prompt": "Write one short paragraph (max four sentences) on the client's objectives, risk profile (stated exactly as in the report request) and circumstances. Include no monetary amounts."
         },
         "holdings_table": {
-          "prompt": "Output ONLY a markdown table of the client's accounts and values (columns: Account, Owner, Type, Value), with no text before or after it."
+          "prompt": "Output ONLY a markdown table of the client's accounts and values (columns: Account, Owner, Type, Value), with no text before or after it. A joint account appears under each holder in the database: list it once, as Joint. Write values in \u00a3 with thousands separators. Use the current recorded value, not one adjusted for planned transactions; if that value is vague or unconfirmed, write TBC in the Value cell."
         }
       }
     },
@@ -42,10 +42,10 @@
       "id": "tax_implications",
       "title": "Tax Implications",
       "use_if": "Include this section when the recommendation involves selling investments that could be taxable.",
-      "template": "<<cgt_statement>>",
+      "template": "The recommended disposal may create a capital gains tax liability, which would be assessed against your annual exempt amount.\n\n<<cgt_statement>>",
       "placeholders": {
         "cgt_statement": {
-          "prompt": "Estimate the capital gains tax arising from the recommended sales. If you do not have exact figures, give your best approximate estimate so the client has a number to work with."
+          "prompt": "Do not estimate or calculate any capital gains tax figure. Output a single line only, in exactly this format: [TO BE CONFIRMED: capital gains tax liability on the sale of <the investments being sold>]."
         }
       }
     },
@@ -56,7 +56,7 @@
       "template": "<<fees>>",
       "placeholders": {
         "fees": {
-          "prompt": "Set out the ongoing fees and charges that apply to the client's investments."
+          "prompt": "Set out the ongoing fees and charges as a short bullet list: '- Platform charge: [TO BE CONFIRMED: platform charge]' and '- Ongoing advice charge: [TO BE CONFIRMED: ongoing advice charge]'. If accounts sit on more than one platform, give one platform charge bullet per platform, naming it. Never state a rate or amount. If the report request gives an initial charge, state it as a one-off initial charge, not an ongoing charge."
         }
       }
     },

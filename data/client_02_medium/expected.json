@@ -1,0 +1,9 @@
+{
+  "schema_version": 2,
+  "overrides": {
+    "H-GIA-J": {
+      "value": "TBC",
+      "why": "Notes (14 May, newer than DB 15 Mar) say 'a little over £45,000': inexact, so unconfirmed; DB £40,000 is stale (statement_summary.png shows the same 15 Mar figure)"
+    }
+  }
+}
