@@ -67,11 +67,28 @@ class ReportGenerator:
         return response.choices[0].message.content.strip()
 
 
+def dedupe_accounts(db_text: str) -> str:
+    """Flatten the db to one list of accounts. A joint account is recorded under each holder, so
+    keep a single copy per account_id; otherwise the model lists it once per holder."""
+    db = json.loads(db_text)
+    accounts: dict[str, dict] = {}
+    for holder in db.get("holders", {}).values():
+        for account in holder.get("accounts", []):
+            accounts.setdefault(account["account_id"], account)
+    flat = {k: v for k, v in db.items() if k != "holders"} | {
+        "accounts": list(accounts.values())
+    }
+    return json.dumps(flat, indent=2, ensure_ascii=False)
+
+
 def read_client_context(client_dir: Path, filenames: list[str]) -> str:
     """Read the named files from the client folder and concatenate them into one context string."""
     parts = []
     for name in filenames:
-        parts.append(f"=== {name} ===\n{read_file(client_dir / name)}")
+        text = read_file(client_dir / name)
+        if name == "client_data_db.json":
+            text = dedupe_accounts(text)
+        parts.append(f"=== {name} ===\n{text}")
     return "\n\n".join(parts)
 
 
@@ -92,7 +109,11 @@ def main() -> None:
 
     config = json.loads(args.config.read_text(encoding="utf-8"))
     client_dir = args.data_dir / args.client
-    filenames = sorted(path.name for path in client_dir.iterdir() if path.is_file())
+    # Only feed the model the sources the report is written from (config `context_files`);
+    # distractors (platform updates, model portfolio packs) and images are left out.
+    filenames = config.get("context_files") or sorted(
+        path.name for path in client_dir.iterdir() if path.is_file()
+    )
     context = read_client_context(client_dir, filenames)
     report = generator.generate(config, context)
 

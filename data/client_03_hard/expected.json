@@ -1,0 +1,21 @@
+{
+  "schema_version": 2,
+  "overrides": {
+    "H-GIA-JF": {
+      "value": "TBC",
+      "why": "Notes (16 May, newer than DB 10 Mar) say 'around £38,000': inexact, so unconfirmed; DB £30,000 is stale (statement_summary.png shows the same 10 Mar figure)"
+    }
+  },
+  "amounts": [
+    {
+      "value": "£120,000",
+      "why": "Request states exactly 'GBP 120,000 inheritance' (notes say 'around £120,000', the request is exact); Jean's inheritance, to be invested"
+    }
+  ],
+  "forbidden_amounts": [
+    {
+      "value": "£38,000",
+      "why": "Notes 16 May: GIA 'around £38,000' seen on screen, inexact and unverified; must be TBC, never stated as a figure"
+    }
+  ]
+}

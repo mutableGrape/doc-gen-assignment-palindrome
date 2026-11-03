@@ -56,8 +56,18 @@ Decisions made:
 
 Intentionally used minimal prompt changes to take client_01 from ~72% to 100% on 4/4 runs.
 
-## 005 - CLient 02: Minimal Prompt Changes
+## 005 - Client 02: Minimal Prompt Changes
 
 Took client_02 from ~92% to ~98% (4/6 runs at 100%): CGT as a `[TO BE CONFIRMED]`. Ensured client_01 remained at 100%. 
 
 
+## 006 - Client 03: Context, Placeholders, Bereavement
+
+Decisions:
+1. Pipeline only feeds `context_files` (db, notes, request, fde_notes): distractor docs and the image are dropped.
+2. Joint accounts are deduped in code (one entry per account_id) instead of asking the model to list it once.
+3. No figure inside a `[TO BE CONFIRMED]` placeholder; Recommendations states no account values, sums or splits (allocation is a placeholder) and the new-money amount comes from the request only.
+4. Background acknowledges a bereavement gently.
+5. Added `forbidden_amounts` £38,000 (client_03) and £45,000 (client_02) to expected.json: vague figures are otherwise "allowed" because they appear in the notes.
+
+Open: judge d5 occasionally rejects the request's 0.5% initial charge
