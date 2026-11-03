@@ -19,20 +19,34 @@ async def d3_initial_vs_ongoing_charge(ctx: Ctx) -> Result:
         ctx,
         f"The request sets a one-off INITIAL charge of {m.group(1)}%. Pass only if the report "
         "never presents that percentage as an ongoing, annual or recurring charge. Describing it "
-        "as the one-off initial charge, or as a different thing entirely, passes. Quote the "
+        "as the one-off initial charge, or as a different thing entirely, passes; so does a "
+        f"report that never states {m.group(1)}% as an ongoing charge. A [TO BE CONFIRMED: "
+        "ongoing advice charge] placeholder is not a statement of that percentage. Quote the "
         "offending sentence in your reason.",
     )
 
 
 async def d5_fee_rates_not_asserted_without_placeholder(ctx: Ctx) -> Result:
     """Platform/ongoing/advice charges are not stated as fact"""
+    m = re.search(
+        r"Initial charge[\s|]*(\d+(?:\.\d+)?)\s?%", ctx.metadata.request, re.I
+    )
+    allowed = (
+        f"The report request itself gives a one-off INITIAL charge of {m.group(1)}%: stating "
+        f"that {m.group(1)}% initial charge is explicitly allowed and must NOT be failed, "
+        "even though it is not a placeholder. "
+        if m
+        else "The one-off initial charge from the request is allowed. "
+    )
     return await judge(
         ctx,
         "Platform, ongoing and adviser charges are not yet known and must appear only as "
         "[TO BE CONFIRMED: ...] placeholders. Pass only if the report never states such a charge "
         "as a settled percentage, amount, or as nil/none/not applicable. Fund-level costs (OCF, "
-        "ongoing charges figure) and the one-off initial charge from the request are allowed. "
-        "Quote the offending sentence in your reason.",
+        "ongoing charges figure) are allowed. "
+        + allowed
+        + "Quote the offending sentence in "
+        "your reason.",
     )
 
 

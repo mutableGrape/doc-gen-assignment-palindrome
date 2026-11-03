@@ -11,9 +11,12 @@ async def f1_phrasing_is_bereavement_sensitive(ctx: Ctx):
 
 
 async def f2_charges_flagged_per_platform(ctx: Ctx):
+    # The premise is checkable from the db, so gate on it instead of leaving it to the judge.
+    if len({a.get("platform") for a in ctx.metadata.db_accounts().values()}) < 2:
+        return {}
     return await judge(
         ctx,
-        "If accounts are on more than one platform, charges are set out or flagged per platform. Answer na if there is a single platform.",
+        "Accounts are on more than one platform: charges must be set out or flagged per platform.",
     )
 
 

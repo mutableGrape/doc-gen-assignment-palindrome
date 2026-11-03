@@ -41,6 +41,14 @@ async def e3_agreed_actions_are_covered(ctx: Ctx):
     )
 
 
+async def e5_introduction_covers_requested_accounts(ctx: Ctx):
+    return await judge(
+        ctx,
+        "The Introduction's scope covers every account the report request says the report covers, "
+        "including any new account to be opened, and no account type outside that scope.",
+    )
+
+
 async def e4_risk_profile_is_consistent(ctx: Ctx):
     return await judge(
         ctx,
@@ -53,4 +61,5 @@ EVAL_CHECKS = [
     e2_recommendations_are_clear,
     e3_agreed_actions_are_covered,
     e4_risk_profile_is_consistent,
+    e5_introduction_covers_requested_accounts,
 ]
