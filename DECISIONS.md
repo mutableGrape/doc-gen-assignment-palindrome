@@ -124,3 +124,17 @@ Additional keys added to `expected.json` to handle required and forbidden statem
 Ideal report added to ensure target state is clear and evals are correctly aligned to the goal. 
 
 Using the ideal report and issues context, updates were made to the evals to include more cases while ensuring alignment with previous clients. 
+
+## 011. Client 04 prompt optimisation
+
+Three prompts changed in `config/template_config.json`;
+- `summary`: only what bears on the advice; omit unactioned aspirations, tangents and feelings.
+- `recommendation`: one paragraph per action in the notes' plan, plus unchanged products ("revisited at next review");
+  amount from the request, else the amount received in the notes, naming committed parts; contingent money never counted;
+  a specific placeholder per unknown amount; no account values, no invented actions; closing per-platform charge flag.
+- `fees`: one placeholder per platform when several, plus the ongoing advice charge.
+
+Results: client_04 86.0% -> 95-100%. Clients 01-03 100%.
+One drift caught and fixed mid-way: loosening "do not state account values" made client_03 quote the vague £38,000.
+Remaining flake on client_04: occasionally the GIA top-up or one outstanding item is dropped (h1/h3), or charges not per platform (f2).
+Not changed: cash accounts stay in the table; generic tax-relief sentences are discouraged by the prompt, not forbidden.

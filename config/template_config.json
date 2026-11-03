@@ -1,6 +1,11 @@
 {
   "document_title": "Investment Advice Report",
-  "context_files": ["client_data_db.json", "meeting_notes.docx", "report_request.docx", "fde_notes.md"],
+  "context_files": [
+    "client_data_db.json",
+    "meeting_notes.docx",
+    "report_request.docx",
+    "fde_notes.md"
+  ],
   "global_instructions": "You are writing sections of a financial advice report addressed to the client. Write in clear British English, in the first person ('we'). Output only the text for the section itself, with no extra headings or commentary. Output only the requested fragment, which is inserted into fixed template text: no intro or closing sentences, and do not repeat content that belongs to other sections. Be concise. Address the client as 'you', never by name or as 'she'/'he'. Never state or estimate charges or capital gains tax: flag them as [TO BE CONFIRMED: <what is needed>]. Where figures differ between sources, use the most recent by date and never quote or mention the older, superseded figure; treat vague figures ('around', 'over') as unconfirmed, not exact: never quote them, and never put any figure inside a [TO BE CONFIRMED: ...] placeholder (say only what needs confirming, e.g. [TO BE CONFIRMED: current value of the joint GIA]). Leave out detail irrelevant to the advice (e.g. holidays).",
   "sections": [
     {
@@ -21,7 +26,7 @@
       "template": "<<summary>>\n\nThe accounts covered by this report are as follows:\n\n<<holdings_table>>",
       "placeholders": {
         "summary": {
-          "prompt": "Write one short paragraph (max four sentences) on the client's objectives, risk profile (stated exactly as in the report request) and circumstances. Include no monetary amounts. If the new money is an inheritance, acknowledge the bereavement gently and respectfully (e.g. 'following the loss of your mother'), never as a bare transaction."
+          "prompt": "Write one short paragraph (max four sentences) on the client's objectives, risk profile (stated exactly as in the report request) and circumstances. Include no monetary amounts. Mention only what bears on the advice: omit future aspirations the notes say are not to be actioned (family, gifts, charity), property or other tangents, and any commentary on the client's feelings. If the new money is an inheritance, acknowledge the bereavement gently and respectfully (e.g. 'following the loss of your mother'), never as a bare transaction."
         },
         "holdings_table": {
           "prompt": "Output ONLY a markdown table of the client's accounts and values (columns: Account, Owner, Type, Value), with no text before or after it. A joint account appears under each holder in the database: list it once, as Joint. The Owner cell is the holder's first name as recorded in the database (or Joint), never 'You'. Name accounts descriptively (e.g. 'Holloway Stocks & Shares ISA'), never by their database ID. Write values in £ with thousands separators. Use the current recorded value, not one adjusted for planned transactions; if that value is vague or unconfirmed, use that [TO BE CONFIRMED: ...] placeholder in the Value cell."
@@ -35,7 +40,7 @@
       "template": "We recommend the following:\n\n<<recommendation>>",
       "placeholders": {
         "recommendation": {
-          "prompt": "Describe what the client should do with their investments, and why. State the amount of new money invested exactly as given in the report request (it is exact even where the meeting note says 'around'); if the request gives no amount, state none. Do not state the value of any account and do not add up or split any amounts: say where each pot of money goes, and write the allocation between the ISAs and any new account as [TO BE CONFIRMED: allocation of funds]. Mention the platform charge as [TO BE CONFIRMED: platform charge]."
+          "prompt": "Describe what the client should do with their investments, and why, as one short paragraph per action, covering EVERY action in the meeting notes' plan for the money, one by one (each account to be used or added to, any sale or rebalance, any new account), plus each existing product the notes say to leave unchanged (say it is unchanged and will be revisited at the next review; never recommend selling it). Open with the new money: state the amount exactly as given in the report request (exact even where the meeting note says 'around'); if the request gives no amount, state the amount the meeting notes say has been received. If part of it is already committed elsewhere (e.g. repaying a loan), state that amount and that only the remainder is available once the timing is confirmed. Never count deferred or contingent payments as available money. If neither source gives an amount, state none. Never state or estimate the value of any account (even if a source gives one) or ask for account values; do not add up or split any amounts. Do not add actions that the notes and request do not mention. Do not invent amounts or splits. Every paragraph about money going into or out of an account must end with a placeholder naming that item's amount, e.g. [TO BE CONFIRMED: amount to be placed in the new account], and the paragraph on the committed part must end with [TO BE CONFIRMED: timing of the repayment]. Refer to the client only as 'you', never by first name. Do not commit to a pension or ISA contribution figure. Follow the notes on which existing accounts are added to; the remaining balance after those goes into the new account (never into an existing one). Do not explain general tax rules. Finish with one sentence flagging the platform charges as placeholders, one per platform if there are several (e.g. [TO BE CONFIRMED: Holloway platform charge])."
         }
       }
     },
@@ -57,7 +62,7 @@
       "template": "<<fees>>",
       "placeholders": {
         "fees": {
-          "prompt": "Write two short, natural sentences on the ongoing fees and charges, using the placeholders [TO BE CONFIRMED: platform charge] and [TO BE CONFIRMED: ongoing advice charge] instead of any rate or amount; both placeholders must appear exactly as written. Name each platform if there is more than one. State the initial charge exactly as given in the report request as one-off; if the request gives none, state none."
+          "prompt": "Write two or three short, natural sentences on the ongoing fees and charges, using placeholders instead of any rate or amount. With one platform use [TO BE CONFIRMED: platform charge]; with several platforms use one placeholder per platform, named like [TO BE CONFIRMED: <platform name> platform charge], and name each platform. Also include [TO BE CONFIRMED: ongoing advice charge]. Each placeholder must appear exactly once. State the initial charge exactly as given in the report request as one-off; if the request gives none, state none."
         }
       }
     },
