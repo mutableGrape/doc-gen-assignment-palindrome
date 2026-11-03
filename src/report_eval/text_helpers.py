@@ -31,6 +31,26 @@ def money_values(text: str) -> set[float]:
     return out
 
 
+# Amounts written without a currency marker. Comma-grouped (1,000+) or 5+ plain digits, so years
+# (2026), risk profiles (5), percentages and day numbers never match.
+_BARE_RE = re.compile(
+    r"(?<![\w.,£])(\d{1,3}(?:,\d{3})+(?:\.\d{1,2})?|\d{5,}(?:\.\d{1,2})?)(?!\d)"
+)
+_BARE_K_RE = re.compile(r"(?<![\w.,])(\d+(?:\.\d+)?)k\b", re.I)  # "40k"
+
+
+def amounts_in(text: str) -> set[float]:
+    """Every monetary-looking amount: £/GBP-marked ones (`money_values`) plus bare 40,000 / 40,000.00 / 40k.
+
+    Use this when scanning a report or sources for figures. `money_values` stays strict (needs £/GBP)
+    for validating expected.json entries.
+    """
+    out = money_values(text)
+    out |= {round(float(m.replace(",", "")), 2) for m in _BARE_RE.findall(text)}
+    out |= {round(float(m) * 1e3, 2) for m in _BARE_K_RE.findall(text)}
+    return out
+
+
 def parse_expected_money(items: list[str]) -> set[float]:
     return money_values(" ".join(items))
 
@@ -102,4 +122,6 @@ def paragraphs(text: str) -> list[str]:
 
 def prose(text: str) -> str:
     """`text` without markdown table lines."""
-    return "\n".join(line for line in text.splitlines() if not line.strip().startswith("|"))
+    return "\n".join(
+        line for line in text.splitlines() if not line.strip().startswith("|")
+    )

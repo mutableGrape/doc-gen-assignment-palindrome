@@ -34,7 +34,9 @@ def no_expected(ctx: Ctx) -> EvaluationReason | None:
     if ctx.metadata.has_expected:
         return None
     return EvaluationReason(
-        value=False, reason="expected.json not found for this client; check cannot run"
+        value=False,
+        reason="expected.json not found for this client; check cannot run "
+        f"(create it: python -m report_eval.run --client {ctx.inputs.client} --draft-expected)",
     )
 
 

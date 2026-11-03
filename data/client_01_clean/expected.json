@@ -1,0 +1,10 @@
+{
+  "schema_version": 2,
+  "amounts": [
+    {"value": "£20,000", "why": "Notes 12 May and request: cash-to-ISA transfer agreed"}
+  ],
+  "derived_amounts": [
+    {"value": "£72,000", "why": "ISA after transfer: DB £52,000 + £20,000 (derived, not stated in notes)"},
+    {"value": "£5,000", "why": "Cash after transfer: DB £25,000 - £20,000 (derived, not stated in notes)"}
+  ]
+}

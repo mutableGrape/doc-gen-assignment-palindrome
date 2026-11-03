@@ -3,7 +3,7 @@
 from pydantic_evals.evaluators import EvaluationReason
 
 from report_eval.checks._base import Ctx, Result, judge
-from report_eval.text_helpers import format_money, money_values
+from report_eval.text_helpers import amounts_in, format_money
 
 
 def e1_background_has_no_amounts(ctx: Ctx) -> Result:
@@ -20,7 +20,7 @@ def e1_background_has_no_amounts(ctx: Ctx) -> Result:
         for a in ctx.metadata.db_accounts().values()
         if isinstance(a.get("value"), (int, float))
     }
-    found = money_values(prose) - account_values
+    found = amounts_in(prose) - account_values
     return EvaluationReason(
         value=not found,
         reason=f"amounts in prose: {format_money(found)}" if found else None,

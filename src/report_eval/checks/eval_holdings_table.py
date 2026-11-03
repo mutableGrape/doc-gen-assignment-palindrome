@@ -1,8 +1,7 @@
 """Checks on the holdings table.
 
-expected.json shape (all keys optional; a missing key skips the check):
-  "accounts": [{"match": "<regex over the row>", "value": "£45,000" | "TBC", "owner": "Joint"}]
-  "excluded_accounts": ["<regex for rows that must not appear, e.g. closed accounts>"]
+expected.json schema and validation live in report_eval/expected.py. Without the file these
+checks fail loudly; with the file, an absent key skips the check.
 """
 
 import re
@@ -11,7 +10,7 @@ from pydantic_evals.evaluators import EvaluationReason
 
 from report_eval.checks._base import Ctx, Result, judge, no_expected
 from report_eval.models import ReportOutput
-from report_eval.text_helpers import markdown_tables, money_values
+from report_eval.text_helpers import amounts_in, markdown_tables, money_values
 
 HEADER = ["Account", "Owner", "Type", "Value"]
 
@@ -109,7 +108,7 @@ async def c5_unknown_values_flagged_as_tbc(ctx: Ctx) -> Result:
             return EvaluationReason(
                 value=False, reason=f"account missing from table: {a['match']}"
             )
-        if money_values(row[-1]):
+        if amounts_in(row[-1]):
             return EvaluationReason(
                 value=False,
                 reason=f"unknown value shown as an amount: {a['match']} -> {row[-1]}",
@@ -123,7 +122,9 @@ async def c5_unknown_values_flagged_as_tbc(ctx: Ctx) -> Result:
 def c6_table_directly_follows_its_lead_in(ctx: Ctx) -> Result:
     """The line directly above the table is the template's lead-in ('...as follows:')"""
     lines = [line for line in _background(ctx.output).splitlines() if line.strip()]
-    first = next((i for i, line in enumerate(lines) if line.strip().startswith("|")), None)
+    first = next(
+        (i for i, line in enumerate(lines) if line.strip().startswith("|")), None
+    )
     if first is None:
         return EvaluationReason(value=False, reason="no table in Background")
     above = lines[first - 1].strip() if first else ""
@@ -148,13 +149,25 @@ def c7_table_values_match(ctx: Ctx) -> Result:
     for a in accounts:
         row = next((r for r in rows if _matches(r, a["match"])), None)
         want = money_values(a["value"])
-        if row is None or money_values(row[-1]) != want:
+        if row is None or amounts_in(row[-1]) != want:
             bad.append(
                 f"{a['match']} want {a['value']} got {row[-1] if row else 'no row'}"
             )
         elif a.get("owner") and a["owner"].lower() not in row[1].lower():
             bad.append(f"{a['match']} owner want {a['owner']} got {row[1]}")
     return EvaluationReason(value=not bad, reason="; ".join(bad))
+
+
+def c8_values_have_pound_sign(ctx: Ctx) -> Result:
+    """Every amount in the table's Value column is written with a £ sign"""
+    bad = [
+        f"{row[0]}: {row[-1]!r}"
+        for row in _rows(ctx.output)
+        if amounts_in(row[-1]) and not money_values(row[-1])
+    ]
+    return EvaluationReason(
+        value=not bad, reason=f"Value cells without £: {bad}" if bad else None
+    )
 
 
 EVAL_CHECKS = [
@@ -165,4 +178,5 @@ EVAL_CHECKS = [
     c5_unknown_values_flagged_as_tbc,
     c6_table_directly_follows_its_lead_in,
     c7_table_values_match,
+    c8_values_have_pound_sign,
 ]

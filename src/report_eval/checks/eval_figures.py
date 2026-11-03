@@ -4,11 +4,11 @@ from pydantic_evals.evaluators import EvaluationReason
 
 from report_eval.checks._base import Ctx, Result, no_expected
 from report_eval.models import CaseMeta
-from report_eval.text_helpers import format_money, money_values, parse_expected_money
+from report_eval.text_helpers import amounts_in, format_money, parse_expected_money
 
 
 def _allowed_money(meta: CaseMeta) -> set[float]:
-    allowed = money_values(meta.notes) | money_values(meta.request)
+    allowed = amounts_in(meta.notes) | amounts_in(meta.request)
     allowed |= {
         float(a["value"])
         for a in meta.db_accounts().values()
@@ -22,7 +22,7 @@ def _allowed_money(meta: CaseMeta) -> set[float]:
 def b1_figures_are_traceable(ctx: Ctx) -> Result:
     """Every £ figure traces to the DB, meeting note, request or expected derivations"""
     report, meta = ctx.output, ctx.metadata
-    stray = money_values(report.raw) - _allowed_money(meta)
+    stray = amounts_in(report.raw) - _allowed_money(meta)
     return EvaluationReason(
         value=not stray,
         reason=f"untraceable figures: {format_money(stray)}" if stray else None,
@@ -32,7 +32,7 @@ def b1_figures_are_traceable(ctx: Ctx) -> Result:
 def b2_no_distractor_figures(ctx: Ctx) -> Result:
     """No figures from platform updates / model portfolio packs appear"""
     report, meta = ctx.output, ctx.metadata
-    leaked = (money_values(meta.distractors) - _allowed_money(meta)) & money_values(
+    leaked = (amounts_in(meta.distractors) - _allowed_money(meta)) & amounts_in(
         report.raw
     )
     terms = [
@@ -59,7 +59,7 @@ def b3_live_not_stale_values(ctx: Ctx) -> Result:
     )
     if live is None and stale is None:
         return {}
-    seen = money_values(report.raw)
+    seen = amounts_in(report.raw)
     missing = parse_expected_money(live or []) - seen
     used_stale = parse_expected_money(stale or []) & seen
     problems = ([f"missing live {format_money(missing)}"] if missing else []) + (
@@ -79,7 +79,7 @@ def b4_expected_amounts_only(ctx: Ctx) -> Result:
     )
     if want is None and forbid is None:
         return {}
-    seen = money_values(report.raw)
+    seen = amounts_in(report.raw)
     missing = parse_expected_money(want or []) - seen
     present = parse_expected_money(forbid or []) & seen
     problems = ([f"missing {format_money(missing)}"] if missing else []) + (

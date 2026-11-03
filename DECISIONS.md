@@ -45,3 +45,10 @@ Decisions made:
 
 Ran client_01 through evals and hit ~50% pass rate showing issues are being caught correctly.  
 
+
+## 003 - Improving the Eval Pipeline
+
+Decisions made:
+1. A static training-data style object helps with ensuring right values are present. To minimise potential drift, this should be a structured delta on the db rather than a copy of the information. I've added a script to help generate it, but the contents are to be hand-reviewed and updated in this case. 
+
+

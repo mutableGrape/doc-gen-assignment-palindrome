@@ -14,6 +14,8 @@ from pathlib import Path
 
 from document_formatter.loading import read_file
 
+from report_eval.expected import load_expected, resolve
+
 from report_eval.text_helpers import (
     find_line,
     markdown_tables,
@@ -114,18 +116,22 @@ def build_meta(client: str, data_dir: Path, config_path: Path) -> CaseMeta:
         ),
         None,
     )
-    return CaseMeta(
+    meta = CaseMeta(
         notes=docs.get("meeting_notes.docx", ""),
         request=request,
         db=db,
         distractors="\n".join(t for n, t in docs.items() if n not in CORE_SOURCES),
-        expected=json.loads(expected_path.read_text("utf-8"))
-        if expected_path.exists()
-        else {},
-        has_expected=expected_path.exists(),
+        expected={},
+        has_expected=False,
         config=config,
         config_text=config_text,
         other_client_strings=other,
         sells_investments=sells_investments(request),
         fca_line=fca_line,
     )
+    if expected_path.exists():
+        meta.expected = resolve(
+            load_expected(expected_path, meta), meta
+        )  # raises ExpectedError
+        meta.has_expected = True
+    return meta
