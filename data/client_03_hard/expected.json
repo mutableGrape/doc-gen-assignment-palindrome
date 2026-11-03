@@ -17,5 +17,19 @@
       "value": "£38,000",
       "why": "Notes 16 May: GIA 'around £38,000' seen on screen, inexact and unverified; must be TBC, never stated as a figure"
     }
+  ],
+  "forbidden_terms": [
+    {
+      "value": "grandchild",
+      "why": "Meeting note: grandchildren are small talk, 'nothing there changes the advice'; must not appear"
+    },
+    {
+      "value": "trip",
+      "why": "Meeting note: planned trip is small talk, 'nothing there changes the advice'; must not appear"
+    },
+    {
+      "value": "flowers",
+      "why": "Meeting note: office flowers are an internal courtesy, not report content"
+    }
   ]
 }

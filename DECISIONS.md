@@ -69,6 +69,7 @@ Decisions:
 3. No figure inside a `[TO BE CONFIRMED]` placeholder; Recommendations states no account values, sums or splits (allocation is a placeholder) and the new-money amount comes from the request only.
 4. Background acknowledges a bereavement gently.
 5. Added `forbidden_amounts` £38,000 (client_03) and £45,000 (client_02) to expected.json: vague figures are otherwise "allowed" because they appear in the notes.
+6. Decison to allow inclusion of cash account as per a total-wealth approach. Would aim to confirm this real-life scenario. 
 
 Open: judge d5 occasionally rejects the request's 0.5% initial charge
 

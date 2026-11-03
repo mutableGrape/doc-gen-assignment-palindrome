@@ -2,28 +2,30 @@
 
 ## Introduction
 
-Further to our recent discussions, we are writing to set out our advice in relation to your Stocks & Shares ISAs, joint General Investment Account, and new joint account. This advice is based on the information currently available to us.
+Further to our recent discussions, we are writing to set out our advice in relation to your Stocks & Shares ISAs, your General Investment Account, and a new joint investment account. This advice is based on the information currently available to us.
 
 This firm is authorised and regulated by the Financial Conduct Authority.
 
 ## Background & Objectives
 
-Your objectives remain focused on long-term growth, with no income requirement from the portfolio for the foreseeable future, and you have both expressed comfort with a moderate risk profile. Following the loss of your mother, you have received an inheritance, which you would like to invest alongside your existing portfolio. We will ensure that your investment strategy reflects your goals and current circumstances with sensitivity.
+Your objectives remain focused on long-term growth, and you have expressed that you do not require any income from your portfolio for the foreseeable future. Given the recent loss of your mother, along with the inheritance you have received, it's important to handle the allocation of these funds sensitively. You both prefer a moderate risk profile, which we will maintain as we implement the new investment strategy.
 
 The accounts covered by this report are as follows:
 
-| Account                              | Owner  | Type                          | Value          |
-|-------------------------------------|--------|-------------------------------|----------------|
-| Holloway Stocks & Shares ISA        | Robert | Stocks & Shares ISA           | £70,000        |
-| Holloway Stocks & Shares ISA        | Jean   | Stocks & Shares ISA           | £66,000        |
-| Holloway General Investment Account  | Joint  | General Investment Account     | [TO BE CONFIRMED: current value of the joint GIA] |
-| Holloway Cash Account                | Jean   | Cash Account                  | [TO BE CONFIRMED: current balance] |
+| Account                           | Owner  | Type                             | Value           |
+|-----------------------------------|--------|----------------------------------|------------------|
+| Holloway Stocks & Shares ISA      | Robert | Stocks & Shares ISA              | £70,000          |
+| Holloway Stocks & Shares ISA      | Jean   | Stocks & Shares ISA              | £66,000          |
+| Holloway General Investment Account | Joint  | General Investment Account        | [TO BE CONFIRMED: current value of the joint GIA] |
+| Holloway Cash Account              | Jean   | Cash Account                     | [TO BE CONFIRMED: current balance of the cash account] |
 
 ## Recommendations
 
 We recommend the following:
 
-We recommend that you disinvest the joint General Investment Account to release funds for investment alongside the inheritance of £120,000 you received. This combined amount will be allocated as follows: you will fund both your existing Stocks & Shares ISAs to maximise your tax-efficient allowances for the new tax year, and any remaining balance will be placed into a new jointly-held investment account. The exact allocation of funds between the ISAs and the new account is [TO BE CONFIRMED: allocation of funds]. Please be aware that the platform charge for the new joint account will be [TO BE CONFIRMED: platform charge].
+We recommend that you disinvest from the joint General Investment Account to access its current value of [TO BE CONFIRMED: current value of the joint GIA] and combine this with the inheritance of £120,000. The aim will be to top up both your individual Stocks and Shares ISAs, in line with your long-term growth objectives. The remaining balance will be placed into a new jointly-held investment account for further investment opportunities. This strategy aligns with your agreed moderate risk profile.
+
+Please note, charges related to the new account structure, including [TO BE CONFIRMED: platform charge], will be detailed in the final report. We will also need to confirm the allocation of funds between the ISAs and the new account, noted as [TO BE CONFIRMED: allocation of funds].
 
 ## Tax Implications
 
@@ -33,7 +35,7 @@ The recommended disposal may create a capital gains tax liability, which would b
 
 ## Fees & Charges
 
-We will apply a one-off initial charge of 0.5% for the transactions outlined in this report. Ongoing fees and charges will be [TO BE CONFIRMED: platform charge] for the Holloway accounts and [TO BE CONFIRMED: ongoing advice charge].
+The initial charge for the establishment of the accounts will be 0.5%. Please note that ongoing fees and charges are [TO BE CONFIRMED: platform charge] for the Holloway platform and [TO BE CONFIRMED: ongoing advice charge] for advisory services.
 
 ## Conclusion
 

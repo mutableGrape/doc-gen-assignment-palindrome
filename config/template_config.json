@@ -10,7 +10,7 @@
       "template": "Further to our recent discussions, we are writing to set out our advice in relation to <<scope>>. This advice is based on the information currently available to us.\n\nThis firm is authorised and regulated by the Financial Conduct Authority.",
       "placeholders": {
         "scope": {
-          "prompt": "Complete the sentence 'we are writing to set out our advice in relation to ...' by naming which of the client's accounts this report covers. Output ONLY a short noun phrase starting with a lowercase letter, with no full stop, e.g. 'your Stocks & Shares ISA'. It must not be a sentence."
+          "prompt": "Complete the sentence 'we are writing to set out our advice in relation to ...' by naming which of the client's accounts this report covers: every account the report request lists, including any new account to be opened. Output ONLY a short noun phrase starting with a lowercase letter, with no full stop, e.g. 'your Stocks & Shares ISA'. It must not be a sentence."
         }
       }
     },
@@ -57,7 +57,7 @@
       "template": "<<fees>>",
       "placeholders": {
         "fees": {
-          "prompt": "Write two short, natural sentences on the ongoing fees and charges, using the placeholders [TO BE CONFIRMED: platform charge] and [TO BE CONFIRMED: ongoing advice charge] instead of any rate or amount. Name each platform if there is more than one. State any initial charge in the report request as one-off."
+          "prompt": "Write two short, natural sentences on the ongoing fees and charges, using the placeholders [TO BE CONFIRMED: platform charge] and [TO BE CONFIRMED: ongoing advice charge] instead of any rate or amount; both placeholders must appear exactly as written. Name each platform if there is more than one. State the initial charge exactly as given in the report request as one-off; if the request gives none, state none."
         }
       }
     },
